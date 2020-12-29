@@ -1,6 +1,6 @@
 USE [master]
 GO
-/****** Object:  Database [GarageDb]    Script Date: 12/17/2020 11:41:32 AM ******/
+/****** Object:  Database [GarageDb]    Script Date: 12/29/2020 12:07:28 PM ******/
 CREATE DATABASE [GarageDb]
  CONTAINMENT = NONE
  ON  PRIMARY 
@@ -88,9 +88,13 @@ GO
 ALTER DATABASE SCOPED CONFIGURATION SET QUERY_OPTIMIZER_HOTFIXES = OFF;
 GO
 USE [GarageDb]
-
 GO
-/****** Object:  Table [dbo].[Adm_AssetCategory]    Script Date: 12/17/2020 11:41:32 AM ******/
+/****** Object:  User [connect]    Script Date: 12/29/2020 12:07:28 PM ******/
+CREATE USER [connect] FOR LOGIN [connect] WITH DEFAULT_SCHEMA=[dbo]
+GO
+ALTER ROLE [db_owner] ADD MEMBER [connect]
+GO
+/****** Object:  Table [dbo].[Adm_AssetCategory]    Script Date: 12/29/2020 12:07:29 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -105,7 +109,7 @@ CREATE TABLE [dbo].[Adm_AssetCategory](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Adm_AssetType]    Script Date: 12/17/2020 11:41:32 AM ******/
+/****** Object:  Table [dbo].[Adm_AssetType]    Script Date: 12/29/2020 12:07:29 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -119,13 +123,13 @@ CREATE TABLE [dbo].[Adm_AssetType](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Adm_CategoryStatutoryLink]    Script Date: 12/17/2020 11:41:32 AM ******/
+/****** Object:  Table [dbo].[Adm_CategoryStatutoryLink]    Script Date: 12/29/2020 12:07:29 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[Adm_CategoryStatutoryLink](
-	[ID] [int] NOT NULL,
+	[ID] [int] IDENTITY(1,1) NOT NULL,
 	[CategoryID] [int] NULL,
 	[StatutoryID] [int] NULL,
 	[CreatedOn] [datetime] NULL,
@@ -138,7 +142,7 @@ CREATE TABLE [dbo].[Adm_CategoryStatutoryLink](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Adm_Frequency]    Script Date: 12/17/2020 11:41:32 AM ******/
+/****** Object:  Table [dbo].[Adm_Frequency]    Script Date: 12/29/2020 12:07:29 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -152,7 +156,7 @@ CREATE TABLE [dbo].[Adm_Frequency](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Adm_FuelType]    Script Date: 12/17/2020 11:41:32 AM ******/
+/****** Object:  Table [dbo].[Adm_FuelType]    Script Date: 12/29/2020 12:07:29 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -166,7 +170,7 @@ CREATE TABLE [dbo].[Adm_FuelType](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Adm_InsuranceType]    Script Date: 12/17/2020 11:41:32 AM ******/
+/****** Object:  Table [dbo].[Adm_InsuranceType]    Script Date: 12/29/2020 12:07:29 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -180,7 +184,7 @@ CREATE TABLE [dbo].[Adm_InsuranceType](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Adm_LogSheetType]    Script Date: 12/17/2020 11:41:32 AM ******/
+/****** Object:  Table [dbo].[Adm_LogSheetType]    Script Date: 12/29/2020 12:07:29 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -195,7 +199,7 @@ CREATE TABLE [dbo].[Adm_LogSheetType](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Adm_MaintenanceType]    Script Date: 12/17/2020 11:41:32 AM ******/
+/****** Object:  Table [dbo].[Adm_MaintenanceType]    Script Date: 12/29/2020 12:07:29 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -209,13 +213,13 @@ CREATE TABLE [dbo].[Adm_MaintenanceType](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Adm_ManageLogSheet]    Script Date: 12/17/2020 11:41:32 AM ******/
+/****** Object:  Table [dbo].[Adm_ManageLogSheet]    Script Date: 12/29/2020 12:07:29 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[Adm_ManageLogSheet](
-	[ID] [int] NOT NULL,
+	[ID] [int] IDENTITY(1,1) NOT NULL,
 	[CategoryID] [int] NULL,
 	[LogSheetTypeID] [int] NULL,
 	[TriggerFrequency] [int] NULL,
@@ -231,13 +235,14 @@ CREATE TABLE [dbo].[Adm_ManageLogSheet](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Adm_ManageTrigger]    Script Date: 12/17/2020 11:41:32 AM ******/
+/****** Object:  Table [dbo].[Adm_ManageTrigger]    Script Date: 12/29/2020 12:07:29 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[Adm_ManageTrigger](
 	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[CategoryID] [int] NULL,
 	[TriggerID] [int] NULL,
 	[TriggerValue] [int] NULL,
 	[Threshold] [int] NULL,
@@ -252,7 +257,7 @@ CREATE TABLE [dbo].[Adm_ManageTrigger](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Adm_Statutory]    Script Date: 12/17/2020 11:41:32 AM ******/
+/****** Object:  Table [dbo].[Adm_Statutory]    Script Date: 12/29/2020 12:07:29 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -267,7 +272,7 @@ CREATE TABLE [dbo].[Adm_Statutory](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Adm_TriggerType]    Script Date: 12/17/2020 11:41:32 AM ******/
+/****** Object:  Table [dbo].[Adm_TriggerType]    Script Date: 12/29/2020 12:07:29 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -281,7 +286,7 @@ CREATE TABLE [dbo].[Adm_TriggerType](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Hdr_Asset]    Script Date: 12/17/2020 11:41:32 AM ******/
+/****** Object:  Table [dbo].[Hdr_Asset]    Script Date: 12/29/2020 12:07:29 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -317,7 +322,7 @@ CREATE TABLE [dbo].[Hdr_Asset](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Hdr_StatutoryRequirement]    Script Date: 12/17/2020 11:41:32 AM ******/
+/****** Object:  Table [dbo].[Hdr_StatutoryRequirement]    Script Date: 12/29/2020 12:07:29 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -343,23 +348,23 @@ CREATE TABLE [dbo].[Hdr_StatutoryRequirement](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Trn_LogSheet]    Script Date: 12/17/2020 11:41:32 AM ******/
+/****** Object:  Table [dbo].[Trn_LogSheet]    Script Date: 12/29/2020 12:07:29 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[Trn_LogSheet](
 	[ID] [int] IDENTITY(1,1) NOT NULL,
-	[CategoryID] [int] NOT NULL,
-	[LogTypeID] [int] NOT NULL,
-	[TriggerID] [int] NOT NULL,
-	[FrequencyID] [int] NOT NULL,
-	[AssetID] [int] NOT NULL,
-	[RegNo] [varchar](10) NOT NULL,
+	[CategoryID] [int] NULL,
+	[LogTypeID] [int] NULL,
+	[TriggerID] [int] NULL,
+	[FrequencyID] [int] NULL,
+	[AssetID] [int] NULL,
+	[RegNo] [varchar](10) NULL,
 	[PreviousValue] [float] NULL,
 	[CurrentValue] [float] NULL,
 	[LogStatus] [int] NULL,
-	[CreatedOn] [datetime] NOT NULL,
+	[CreatedOn] [datetime] NULL,
 	[ModifiedOn] [datetime] NULL,
 	[ModifiedBy] [varchar](50) NULL,
  CONSTRAINT [PK_Trn_LogSheet] PRIMARY KEY CLUSTERED 
@@ -368,7 +373,78 @@ CREATE TABLE [dbo].[Trn_LogSheet](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
+/****** Object:  StoredProcedure [dbo].[spGetMaintenanceTriggerList]    Script Date: 12/29/2020 12:07:29 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- =============================================
+CREATE PROCEDURE [dbo].[spGetMaintenanceTriggerList]
+
+AS
+BEGIN
+
+	SET NOCOUNT ON;
+
+	SELECT T.[ID]
+		  ,T.[CategoryID]
+		  ,C.CategoryName
+		  ,T.[TriggerID]
+		  ,TP.TriggerName
+		  ,T.[TriggerValue]
+		  ,T.[Threshold]
+		  ,T.[IsActive]
+		  ,T.[CreatedBy]
+		  ,T.[CreatedOn]
+		  ,T.[ModifiedBy]
+		  ,T.[ModifiedOn]
+	  FROM [GarageDb].[dbo].[Adm_ManageTrigger] AS T
+	  INNER JOIN Adm_AssetCategory AS C ON T.CategoryID = C.ID
+	  INNER JOIN Adm_TriggerType AS TP ON T.TriggerID = TP.ID
+
+END
+GO
+/****** Object:  StoredProcedure [dbo].[spGetStatutoryByCategoryId]    Script Date: 12/29/2020 12:07:29 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- =============================================
+CREATE PROCEDURE [dbo].[spGetStatutoryByCategoryId]
+	@CategoryID int
+
+AS
+BEGIN
+
+	SET NOCOUNT ON;
+
+	SELECT L.[ID]
+      ,L.[CategoryID]
+	  ,C.CategoryName
+      ,L.[StatutoryID]
+	  ,S.StatutoryName
+      ,L.[CreatedOn]
+      ,L.[CreatedBy]
+      ,L.[ModifiedOn]
+      ,L.[ModifiedBy]
+  FROM [GarageDb].[dbo].[Adm_CategoryStatutoryLink] AS L
+  LEFT JOIN Adm_AssetCategory AS C ON L.CategoryID = C.ID
+  LEFT JOIN Adm_Statutory AS S ON L.StatutoryID = S.ID
+  WHERE L.CategoryID = @CategoryID
+
+END
+GO
 USE [master]
 GO
 ALTER DATABASE [GarageDb] SET  READ_WRITE 
 GO
+
+
